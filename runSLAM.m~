@@ -46,7 +46,7 @@ laserSensorSettings.Range = 4; % Meters
 nSteps = 1000;
 
 %Number of landfeatures to add to map
-nLandFeatures = 8;
+nLandFeatures = 7;
 
 %init landmarks
 landFeatures = zeros(2,1,nLandFeatures);
@@ -56,8 +56,7 @@ landFeatures(:,:,3)=[-2 -2]';
 landFeatures(:,:,4)=[2 -2]';
 landFeatures(:,:,5)=[2.5 0]';
 landFeatures(:,:,6)=[-0.5 -2.5]';
-landFeatures(:,:,7)=[0.5 2.5]';
-landFeatures(:,:,8)=[-2.5 0.5]';
+landFeatures(:,:,7)=[2.5 0]';
 % landFeatures(:,:,4)=[1.5 2.5]';
 
 

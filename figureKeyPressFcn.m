@@ -15,17 +15,17 @@ disp(eventdata.Key) % Let's display the key, for fun!
 
 switch(eventdata.Key)
     case 'w'
-        v = 0.2;
+        v = 0.02
     case 's'
-        v = -0.2;
+        v = -0.02
     case 'a'
-        w = 0.2;
+        w = 0.02
     case 'd'
-        w = -0.2;
+        w = -0.02
     case 'q'
-        v = 0;
+        v = 0
     case 'e'
-        w = 0;
+        w = 0
     otherwise
 end
 end

@@ -1,4 +1,4 @@
-function drawRobot(x_new, xEst, cov_matrix)
+function drawRobot(x_new, xEst, cov_matrix, drawSensor)
 global landFeatures;
 global laserSensorSettings;
 
@@ -11,8 +11,9 @@ mob_W=0.1; % The Mobile Robot width
 Tire_W=0.05; % The Tire width
 Tire_L=mob_L/2;  % The Tire length
 plot(x,y,'-r') % Dawing the Path
-%axis([x-3 x+3 y-3 y+3]) 
+%axis([x-3 x+3 y-3 y+3])
 %axis([-20 20 -20 +20])
+%axis([-10 10 -10 +10])
 axis([-3 3 -3 3])
 hold on
 
@@ -86,7 +87,7 @@ fill(mob_x,mob_y,'b')
 mob_x=[v9(1) v10(1) v11(1) v12(1) v9(1)];
 mob_y=[v9(2) v10(2) v11(2) v12(2) v9(2)];
 plot(mob_x,mob_y,'-k','linewidth',2)
-    fill(mob_x,mob_y,'b')
+fill(mob_x,mob_y,'b')
 
 %Line Between tires
 mob_x=[v13(1) v14(1)];
@@ -106,9 +107,10 @@ sen1_y = linspace(y,y+laserSensorSettings.Range * sin(theta + laserSensorSetting
 sen2_x = linspace(x,x+laserSensorSettings.Range * cos(theta - laserSensorSettings.Bearing*pi/180));
 sen2_y = linspace(y,y+laserSensorSettings.Range * sin(theta - laserSensorSettings.Bearing*pi/180));
 
-plot(sen1_x, sen1_y, '.r');
-plot(sen2_x, sen2_y, '.r');
-
+if(drawSensor)
+    plot(sen1_x, sen1_y, '.r');
+    plot(sen2_x, sen2_y, '.r');
+end
 for j = 4:2:length(xEst)
     plot(xEst(j), xEst(j+1), '+black', 'linewidth',2)
 end
@@ -117,8 +119,12 @@ end
 error_ellipse(cov_matrix, [xEst(1),xEst(2)]);
 
 
+grid on
+title('SLAM')
+xlabel('X direction [m]')
+ylabel('Y direction [m]')
 
 hold off
-drawnow 
+drawnow
 
 end

@@ -3,7 +3,7 @@ function [z,iFeature] = getObservation(xTrue, observationNoiseFactor)
 global landFeatures;
 global laserSensorSettings
 
-z =[]; iFeature = []; % return negative, no detection at all by default
+z =[]; iFeature = ; % return negative, no detection at all by default
 
 l = size(landFeatures,3); % get amount of landmarks
 
@@ -23,7 +23,7 @@ for i=1 :l
     %Observation model of the sensor ( Bearing and range
     if(abs(zTemp(2))<laserSensorSettings.Bearing*pi/180 && zTemp(1) < laserSensorSettings.Range)
         z=[z;zTemp]; % copy calculated observation
-        iFeature =[iFeature,i]; % Return lable of the feature
+        iFeature =[i]; % Return lable of the feature
         fprintf(sprintf('=======================================================================   Range is: %d, LandMark Found !! ID:%d \n',z(1),i));
     end
 end;
