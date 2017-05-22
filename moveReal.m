@@ -10,7 +10,7 @@ w = u(2);
 theta = x_old(3);
 
 
-if(w ~= 0)
+if(abs(w) > 0.001)
     x_new(1) = x_old(1) + (-v/w) * sin(theta) + (v/w) * sin(theta + dt*w);
     x_new(2) = x_old(2) + (v/w)  * cos(theta) - (v/w) * cos(theta + dt*w);
     x_new(3) = x_old(3) + w*dt;

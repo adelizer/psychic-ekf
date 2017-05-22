@@ -22,7 +22,7 @@ F = [eye(3), zeros(3,length(xOld)-3)];
 % Formulate the process noise
 M = [alpha(1)*v^2 + alpha(2)*w^2, 0; 0, alpha(3)*v^2+alpha(4)*w^2];
 
-if(w~=0)
+if(abs(w) > 0.001)
     xNew = xOld + F' * [((-v/w) * sin(theta)) + ((v/w) * sin(theta + w*dt)); ...
         ((v/w) * cos(theta)) - ((v/w) * cos(theta + w*dt)); ...
         w*dt];

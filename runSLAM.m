@@ -23,7 +23,7 @@
 
 % Handle unordered landmarks views [DONE]
 
-% Handle multiple landmark detections []
+% Handle multiple landmark detections [DONE]
 %% prep workspace
 clear variables
 close all
@@ -122,7 +122,7 @@ for k = 1:nSteps
     %     previousPose = currentPose;
     
     [xPred, covPred] = ekfPredict([v,w], xEst, covEst, alpha, dt);
-    %z = nan;
+    z = nan;
     if(~isnan(z))
         for i =1:size(z,1)
             if(~isnan(mappedLandFeatures(iFeature(i),1)))
